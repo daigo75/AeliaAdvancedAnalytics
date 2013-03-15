@@ -3,7 +3,7 @@
 $PluginInfo['AdvancedGoogleAnalytics'] = array(
 	'Name' => 'Advanced Google Analytics',
 	'Description' => 'Google Analytics Plugin. Avoid tracking some users.',
-	'Version' => '0.1',
+	'Version' => '0.1.1',
 	'RequiredApplications' => array('Vanilla' => '2.1a1'),
 	'RequiredTheme' => FALSE,
 	'RequiredPlugins' => FALSE,

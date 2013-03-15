@@ -45,7 +45,10 @@ class AdvancedGoogleAnalyticsPlugin implements Gdn_IPlugin {
 	public function Base_AfterBody_Handler($Sender) {
 		if ($Sender->MasterView == 'admin') return;
 		$ArrUsers = explode(',', C('Plugins.AdvancedGoogleAnalytics.DoNoTrackUsers'));
-		if(in_array("admin", $ArrUsers)) return;
+		$UserName = Gdn::Session()->User->Name;
+		if($UserName){
+		  if(in_array($UserName, $ArrUsers)) return;
+		}
 		$PageTrackerID = C('Plugins.AdvancedGoogleAnalytics.PageTrackerID');
 		if ($PageTrackerID) echo <<<ANALYTICS
 <!-- Google Analytics -->

@@ -4,7 +4,7 @@ Adds tracking code, such as Google Analytics and StatCounter, allowing to ignore
 
 ##Requirements
 * Vanilla 2.0.10.x or later.
-* Aelia Foundation Classes plugin, version 13.12.09.001 or later
+* Aelia Foundation Classes plugin, version 13.12.09.001 or later.
 * The theme used on the site **must** fire the `AfterBody` event in its master template, or the tracking code will not be added to the pages.
 
 

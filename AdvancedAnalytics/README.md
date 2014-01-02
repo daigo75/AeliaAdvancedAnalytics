@@ -1,8 +1,6 @@
-# Advanced Google Analytics plugin for Vanilla Forums
+# Aelia Advanced Analytics plugin for Vanilla Forums 2.0
 
-Insert your page tracker id (UA-00000000-0) in the options panel and just work.
-You can avoid tracking some users by adding usernames in the options panel (comma-separated list).
+Adds tracking code, such as Google Analytics, allowing to ignore specific users or roles.
 
-## License
-
+## Licence
 GPL v3

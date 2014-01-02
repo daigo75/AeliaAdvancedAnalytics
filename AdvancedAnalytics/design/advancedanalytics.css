@@ -1,0 +1,19 @@
+/*** Aelia Advanced Analytics Plugin ***/
+#GeneralSettings #Form_Plugins-dot-AdvancedAnalytics-dot-GoogleAnalyticsTrackingID {
+	width: 10em;
+}
+
+#GeneralSettings #Form_Plugins-dot-AdvancedAnalytics-dot-DoNoTrackUsers,
+#GeneralSettings #Form_Plugins-dot-AdvancedAnalytics-dot-DoNoTrackRoles {
+	width: 30em;
+}
+
+#Credits {
+	padding: 10px 20px 0;
+	border-top: 1px solid silver;
+	text-align: right;
+}
+
+#Credits .Title {
+	font-weight: bold;
+}

@@ -17,11 +17,22 @@ $PluginInfo['AdvancedAnalytics'] = array(
 );
 
 class AdvancedAnalyticsPlugin extends Gdn_Plugin {
+	/**
+	 * Loads some common JavaScript files and related CSS.
+	 *
+	 * @param Gdn_Controller Sender
+	 */
 	protected function AddCommonJsFiles($Sender) {
 		$Sender->Head->AddCss('https://cdnjs.cloudflare.com/ajax/libs/chosen/1.0/chosen.css');
 		$Sender->AddJsFile('https://cdnjs.cloudflare.com/ajax/libs/chosen/1.0/chosen.jquery.min.js');
 	}
 
+	/**
+	 * Adds the AdvancedAnalytics method to PluginController and performs some
+	 * initialisation steps.
+	 *
+	 * @param Gdn_Controller Sender
+	 */
 	public function PluginController_AdvancedAnalytics_Create($Sender) {
 		$Sender->Permission('Garden.Plugins.Manage');
 		$Sender->AddSideMenu();
@@ -102,6 +113,11 @@ class AdvancedAnalyticsPlugin extends Gdn_Plugin {
 		$Sender->Render($this->GetView('generalsettings.php'));
 	}
 
+	/**
+	 * Determines if current user has any of the roles that should not be tracked.
+	 *
+	 * @return bool
+	 */
 	protected function UserHasExcludedRole() {
 		$UserID = Gdn::Session()->UserID;
 		$ExcludedRoles = C('Plugins.AdvancedAnalytics.DoNoTrackRoles');
@@ -116,6 +132,12 @@ class AdvancedAnalyticsPlugin extends Gdn_Plugin {
 		return false;
 	}
 
+	/**
+	 * Determines if tracking should be skipped, depending on factors such as
+	 * excluded users and roles.
+	 *
+	 * @return bool
+	 */
 	protected function SkipTracking() {
 		// Do not track visits when in Admin section
 		if($Sender->MasterView == 'admin') {
@@ -137,6 +159,11 @@ class AdvancedAnalyticsPlugin extends Gdn_Plugin {
 		return false;
 	}
 
+	/**
+	 * Adds the tracking code to the page.
+	 *
+	 * @param Gdn_Controller Sender
+	 */
 	protected function RenderTrackingCode($Sender) {
 		// Render Google Analytics tracking code, if needed
 		$GoogleAnalyticsTrackingID = C('Plugins.AdvancedAnalytics.GoogleAnalyticsTrackingID');
@@ -146,6 +173,11 @@ class AdvancedAnalyticsPlugin extends Gdn_Plugin {
 		}
 	}
 
+	/**
+	 * Event handler, fired immediately after the page body is rendered.
+	 *
+	 * @param Gdn_Controller Sender
+	 */
 	public function Base_AfterBody_Handler($Sender) {
 		if($this->SkipTracking()) {
 			return;
@@ -154,6 +186,11 @@ class AdvancedAnalyticsPlugin extends Gdn_Plugin {
 		$this->RenderTrackingCode($Sender);
 	}
 
+	/**
+	 * Setup method. Not currently used.
+	 *
+	 * @param Gdn_Controller Sender
+	 */
 	public function Setup() {
 		// Not used
 	}

@@ -3,7 +3,7 @@
 $PluginInfo['AdvancedAnalytics'] = array(
 	'Name' => 'Aelia Advanced Analytics',
 	'Description' => 'Analytics Plugin. Adds tracking code, such as Google Analytics, allowing to ignore specific users or roles.',
-	'Version' => '1.0.0.140102',
+	'Version' => '1.1.0.140102',
 	'RequiredApplications' => array('Vanilla' => '2.0.10'),
 	'RequiredTheme' => false,
 	'RequiredPlugins' => array('AeliaFoundationClasses' => '13.12.09.001',),
@@ -76,6 +76,26 @@ class AdvancedAnalyticsPlugin extends Gdn_Plugin {
 						'Control' => 'TextBox',
 						'Default' => C('Plugins.AdvancedAnalytics.GoogleAnalyticsTrackingID',
 													 'UA-00000000-0'),
+						'Options' => array(
+						)),
+			'Plugins.AdvancedAnalytics.StatCounterProjectID' =>
+			array('LabelCode' => T('StatCounter Project ID'),
+						'Description' => T('You can find the project ID on your StatCounter ' .
+															 'control panel. If you leave this field, or the ' .
+															 'StatCounter Security Code empty, ' .
+															 'StatCounter code will not be added to the pages.'),
+						'Control' => 'TextBox',
+						'Default' => C('Plugins.AdvancedAnalytics.StatCounterProjectID',
+													 ''),
+						'Options' => array(
+						)),
+			'Plugins.AdvancedAnalytics.StatCounterSecurityCode' =>
+			array('LabelCode' => T('StatCounter Security Code'),
+						'Description' => T('You can find the Security Code on your StatCounter ' .
+															 'control panel.'),
+						'Control' => 'TextBox',
+						'Default' => C('Plugins.AdvancedAnalytics.StatCounterSecurityCode',
+													 ''),
 						'Options' => array(
 						)),
 			'Plugins.AdvancedAnalytics.DoNoTrackUsers' =>
@@ -170,6 +190,15 @@ class AdvancedAnalyticsPlugin extends Gdn_Plugin {
 		if(!empty($GoogleAnalyticsTrackingID)) {
 			$Sender->SetData('GoogleAnalyticsTrackingID', $GoogleAnalyticsTrackingID);
 			echo $Sender->FetchView($this->GetView('googleanalytics.php'));
+		}
+
+		// Render StatCounter tracking code, if needed
+		$StatCounterProjectID = C('Plugins.AdvancedAnalytics.StatCounterProjectID');
+		$StatCounterSecurityCode = C('Plugins.AdvancedAnalytics.StatCounterSecurityCode');
+		if(!empty($StatCounterProjectID) && !empty($StatCounterSecurityCode)) {
+			$Sender->SetData('StatCounterProjectID', $StatCounterProjectID);
+			$Sender->SetData('StatCounterSecurityCode', $StatCounterSecurityCode);
+			echo $Sender->FetchView($this->GetView('statcounter.php'));
 		}
 	}
 

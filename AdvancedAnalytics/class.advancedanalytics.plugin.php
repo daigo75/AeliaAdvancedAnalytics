@@ -139,9 +139,9 @@ class AdvancedAnalyticsPlugin extends Gdn_Plugin {
 
 	protected function RenderTrackingCode($Sender) {
 		// Render Google Analytics tracking code, if needed
-		$GoogleAnalyticsTrackerID = C('Plugins.AdvancedAnalytics.PageTrackerID');
-		if(!empty($GoogleAnalyticsTrackerID)) {
-			$Sender->SetData('GoogleAnalyticsTrackerID', $GoogleAnalyticsTrackerID);
+		$GoogleAnalyticsTrackingID = C('Plugins.AdvancedAnalytics.GoogleAnalyticsTrackingID');
+		if(!empty($GoogleAnalyticsTrackingID)) {
+			$Sender->SetData('GoogleAnalyticsTrackingID', $GoogleAnalyticsTrackingID);
 			echo $Sender->FetchView($this->GetView('googleanalytics.php'));
 		}
 	}

@@ -1,12 +1,12 @@
 <?php if (!defined('APPLICATION')) die();
 	// Render Google Analytics tracking code
 
-	$GoogleAnalyticsTrackerID = GetValue('GoogleAnalyticsTrackerID', $this->Data);
+	$GoogleAnalyticsTrackingID = GetValue('GoogleAnalyticsTrackingID', $this->Data);
 ?>
 <!-- Aelia Advanced Analytics - Google Analytics -->
 <script type="text/javascript">
 	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', '<?php echo $GoogleAnalyticsTrackerID; ?>']);
+	_gaq.push(['_setAccount', '<?php echo $GoogleAnalyticsTrackingID; ?>']);
 	_gaq.push(['_trackPageview']);
 
 	(function() {

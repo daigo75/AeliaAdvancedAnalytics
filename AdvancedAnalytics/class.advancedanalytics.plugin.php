@@ -2,7 +2,7 @@
 
 $PluginInfo['AdvancedAnalytics'] = array(
 	'Name' => 'Aelia Advanced Analytics',
-	'Description' => 'Analytics Plugin. Adds tracking coded, such as Google Analytics, allowing to ignore specific users or roles.',
+	'Description' => 'Analytics Plugin. Adds tracking code, such as Google Analytics, allowing to ignore specific users or roles.',
 	'Version' => '1.0.0.140102',
 	'RequiredApplications' => array('Vanilla' => '2.0.10'),
 	'RequiredTheme' => false,

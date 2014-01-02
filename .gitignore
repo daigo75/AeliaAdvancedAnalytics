@@ -1,0 +1,12 @@
+*.komodotools
+/FeaturedPosts/install/plugin.schema.php
+/Awards/install/plugin.schema.php
+/Images/*
+/Awards/design/images/awards/*.png
+/Awards/design/images/awards/*.jpg
+/Awards/test/phpunit_vanilla_testcase.php
+/Awards/test/init.php
+/Awards/test/phpunit_vanilla_testsuite.php
+/Awards/export/*
+/Awards/design/css/awardclasses.css
+/*.komodoproject
